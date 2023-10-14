@@ -1,5 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
 "54 C:/Users/vboxuser/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Users/vboxuser/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -411,18 +410,3 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Users/vboxuser/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-[v $root$_main `(v ~T0 @X0 0 e ]
-"13 application.c
-[; ;application.c: 13: int main() {
-[v _main `(i ~T0 @X0 1 ef ]
-{
-[e :U _main ]
-[f ]
-"15
-[; ;application.c: 15:     return (0);
-[e ) -> 0 `i ]
-[e $UE 273  ]
-"16
-[; ;application.c: 16: }
-[e :UE 273 ]
-}

@@ -5,8 +5,7 @@
  * Created on September 25, 2023, 8:00 PM
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "application.h"
 
 /*
  * 

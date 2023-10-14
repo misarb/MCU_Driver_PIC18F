@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Sat Sep 30 14:17:41 2023
+                                                                                               Sat Oct 14 17:33:03 2023
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	18F4620
@@ -86,7 +86,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
     72 ;;
     73 ;; *************** function _main *****************
     74 ;; Defined at:
-    75 ;;		line 14 in file "application.c"
+    75 ;;		line 13 in file "application.c"
     76 ;; Parameters:    Size  Location     Type
     77 ;;		None
     78 ;; Auto vars:     Size  Location     Type
@@ -183,172 +183,167 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    164   300000  FF                 	db	255
    165                           
    166                           ;Config register CONFIG1H @ 0x300001
-   167                           ;	unspecified, using default values
-   168                           ;	Oscillator Selection bits
-   169                           ;	OSC = 0x7, unprogrammed default
-   170                           ;	Fail-Safe Clock Monitor Enable bit
-   171                           ;	FCMEN = 0x0, unprogrammed default
-   172                           ;	Internal/External Oscillator Switchover bit
-   173                           ;	IESO = 0x0, unprogrammed default
-   174   300001                     	org	3145729
-   175   300001  07                 	db	7
-   176                           
-   177                           ;Config register CONFIG2L @ 0x300002
-   178                           ;	unspecified, using default values
-   179                           ;	Power-up Timer Enable bit
-   180                           ;	PWRT = 0x1, unprogrammed default
-   181                           ;	Brown-out Reset Enable bits
-   182                           ;	BOREN = 0x3, unprogrammed default
-   183                           ;	Brown Out Reset Voltage bits
-   184                           ;	BORV = 0x3, unprogrammed default
-   185   300002                     	org	3145730
-   186   300002  1F                 	db	31
-   187                           
-   188                           ;Config register CONFIG2H @ 0x300003
-   189                           ;	unspecified, using default values
-   190                           ;	Watchdog Timer Enable bit
-   191                           ;	WDT = 0x1, unprogrammed default
-   192                           ;	Watchdog Timer Postscale Select bits
-   193                           ;	WDTPS = 0xF, unprogrammed default
-   194   300003                     	org	3145731
-   195   300003  1F                 	db	31
-   196                           
-   197                           ; Padding undefined space
-   198   300004                     	org	3145732
-   199   300004  FF                 	db	255
-   200                           
-   201                           ;Config register CONFIG3H @ 0x300005
-   202                           ;	unspecified, using default values
-   203                           ;	CCP2 MUX bit
-   204                           ;	CCP2MX = 0x1, unprogrammed default
-   205                           ;	PORTB A/D Enable bit
-   206                           ;	PBADEN = 0x1, unprogrammed default
-   207                           ;	Low-Power Timer1 Oscillator Enable bit
-   208                           ;	LPT1OSC = 0x0, unprogrammed default
-   209                           ;	MCLR Pin Enable bit
-   210                           ;	MCLRE = 0x1, unprogrammed default
-   211   300005                     	org	3145733
-   212   300005  83                 	db	131
-   213                           
-   214                           ;Config register CONFIG4L @ 0x300006
-   215                           ;	unspecified, using default values
-   216                           ;	Stack Full/Underflow Reset Enable bit
-   217                           ;	STVREN = 0x1, unprogrammed default
-   218                           ;	Single-Supply ICSP Enable bit
-   219                           ;	LVP = 0x1, unprogrammed default
-   220                           ;	Extended Instruction Set Enable bit
-   221                           ;	XINST = 0x0, unprogrammed default
-   222                           ;	Background Debugger Enable bit
-   223                           ;	DEBUG = 0x1, unprogrammed default
-   224   300006                     	org	3145734
-   225   300006  85                 	db	133
-   226                           
-   227                           ; Padding undefined space
-   228   300007                     	org	3145735
-   229   300007  FF                 	db	255
-   230                           
-   231                           ;Config register CONFIG5L @ 0x300008
-   232                           ;	unspecified, using default values
+   167                           ;	Oscillator Selection bits
+   168                           ;	OSC = HS, HS oscillator
+   169                           ;	Fail-Safe Clock Monitor Enable bit
+   170                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+   171                           ;	Internal/External Oscillator Switchover bit
+   172                           ;	IESO = OFF, Oscillator Switchover mode disabled
+   173   300001                     	org	3145729
+   174   300001  02                 	db	2
+   175                           
+   176                           ;Config register CONFIG2L @ 0x300002
+   177                           ;	Power-up Timer Enable bit
+   178                           ;	PWRT = OFF, PWRT disabled
+   179                           ;	Brown-out Reset Enable bits
+   180                           ;	BOREN = OFF, Brown-out Reset disabled in hardware and software
+   181                           ;	Brown Out Reset Voltage bits
+   182                           ;	BORV = 1, 
+   183   300002                     	org	3145730
+   184   300002  09                 	db	9
+   185                           
+   186                           ;Config register CONFIG2H @ 0x300003
+   187                           ;	Watchdog Timer Enable bit
+   188                           ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
+   189                           ;	Watchdog Timer Postscale Select bits
+   190                           ;	WDTPS = 32768, 1:32768
+   191   300003                     	org	3145731
+   192   300003  1E                 	db	30
+   193                           
+   194                           ; Padding undefined space
+   195   300004                     	org	3145732
+   196   300004  FF                 	db	255
+   197                           
+   198                           ;Config register CONFIG3H @ 0x300005
+   199                           ;	CCP2 MUX bit
+   200                           ;	CCP2MX = PORTC, CCP2 input/output is multiplexed with RC1
+   201                           ;	PORTB A/D Enable bit
+   202                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
+   203                           ;	Low-Power Timer1 Oscillator Enable bit
+   204                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+   205                           ;	MCLR Pin Enable bit
+   206                           ;	MCLRE = ON, MCLR pin enabled; RE3 input pin disabled
+   207   300005                     	org	3145733
+   208   300005  81                 	db	129
+   209                           
+   210                           ;Config register CONFIG4L @ 0x300006
+   211                           ;	Stack Full/Underflow Reset Enable bit
+   212                           ;	STVREN = ON, Stack full/underflow will cause Reset
+   213                           ;	Single-Supply ICSP Enable bit
+   214                           ;	LVP = OFF, Single-Supply ICSP disabled
+   215                           ;	Extended Instruction Set Enable bit
+   216                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
+      +                          de)
+   217                           ;	Background Debugger Enable bit
+   218                           ;	DEBUG = 0x1, unprogrammed default
+   219   300006                     	org	3145734
+   220   300006  81                 	db	129
+   221                           
+   222                           ; Padding undefined space
+   223   300007                     	org	3145735
+   224   300007  FF                 	db	255
+   225                           
+   226                           ;Config register CONFIG5L @ 0x300008
+   227                           ;	Code Protection bit
+   228                           ;	CP0 = OFF, Block 0 (000800-003FFFh) not code-protected
+   229                           ;	Code Protection bit
+   230                           ;	CP1 = OFF, Block 1 (004000-007FFFh) not code-protected
+   231                           ;	Code Protection bit
+   232                           ;	CP2 = OFF, Block 2 (008000-00BFFFh) not code-protected
    233                           ;	Code Protection bit
-   234                           ;	CP0 = 0x1, unprogrammed default
-   235                           ;	Code Protection bit
-   236                           ;	CP1 = 0x1, unprogrammed default
-   237                           ;	Code Protection bit
-   238                           ;	CP2 = 0x1, unprogrammed default
-   239                           ;	Code Protection bit
-   240                           ;	CP3 = 0x1, unprogrammed default
-   241   300008                     	org	3145736
-   242   300008  0F                 	db	15
-   243                           
-   244                           ;Config register CONFIG5H @ 0x300009
-   245                           ;	unspecified, using default values
-   246                           ;	Boot Block Code Protection bit
-   247                           ;	CPB = 0x1, unprogrammed default
-   248                           ;	Data EEPROM Code Protection bit
-   249                           ;	CPD = 0x1, unprogrammed default
-   250   300009                     	org	3145737
-   251   300009  C0                 	db	192
-   252                           
-   253                           ;Config register CONFIG6L @ 0x30000A
-   254                           ;	unspecified, using default values
-   255                           ;	Write Protection bit
-   256                           ;	WRT0 = 0x1, unprogrammed default
-   257                           ;	Write Protection bit
-   258                           ;	WRT1 = 0x1, unprogrammed default
-   259                           ;	Write Protection bit
-   260                           ;	WRT2 = 0x1, unprogrammed default
-   261                           ;	Write Protection bit
-   262                           ;	WRT3 = 0x1, unprogrammed default
-   263   30000A                     	org	3145738
-   264   30000A  0F                 	db	15
-   265                           
-   266                           ;Config register CONFIG6H @ 0x30000B
-   267                           ;	unspecified, using default values
-   268                           ;	Configuration Register Write Protection bit
-   269                           ;	WRTC = 0x1, unprogrammed default
-   270                           ;	Boot Block Write Protection bit
-   271                           ;	WRTB = 0x1, unprogrammed default
-   272                           ;	Data EEPROM Write Protection bit
-   273                           ;	WRTD = 0x1, unprogrammed default
-   274   30000B                     	org	3145739
-   275   30000B  E0                 	db	224
-   276                           
-   277                           ;Config register CONFIG7L @ 0x30000C
-   278                           ;	unspecified, using default values
-   279                           ;	Table Read Protection bit
-   280                           ;	EBTR0 = 0x1, unprogrammed default
-   281                           ;	Table Read Protection bit
-   282                           ;	EBTR1 = 0x1, unprogrammed default
-   283                           ;	Table Read Protection bit
-   284                           ;	EBTR2 = 0x1, unprogrammed default
-   285                           ;	Table Read Protection bit
-   286                           ;	EBTR3 = 0x1, unprogrammed default
-   287   30000C                     	org	3145740
-   288   30000C  0F                 	db	15
-   289                           
-   290                           ;Config register CONFIG7H @ 0x30000D
-   291                           ;	unspecified, using default values
-   292                           ;	Boot Block Table Read Protection bit
-   293                           ;	EBTRB = 0x1, unprogrammed default
-   294   30000D                     	org	3145741
-   295   30000D  40                 	db	64
-   296                           tosu	equ	0xFFF
-   297                           tosh	equ	0xFFE
-   298                           tosl	equ	0xFFD
-   299                           stkptr	equ	0xFFC
-   300                           pclatu	equ	0xFFB
-   301                           pclath	equ	0xFFA
-   302                           pcl	equ	0xFF9
-   303                           tblptru	equ	0xFF8
-   304                           tblptrh	equ	0xFF7
-   305                           tblptrl	equ	0xFF6
-   306                           tablat	equ	0xFF5
-   307                           prodh	equ	0xFF4
-   308                           prodl	equ	0xFF3
-   309                           indf0	equ	0xFEF
-   310                           postinc0	equ	0xFEE
-   311                           postdec0	equ	0xFED
-   312                           preinc0	equ	0xFEC
-   313                           plusw0	equ	0xFEB
-   314                           fsr0h	equ	0xFEA
-   315                           fsr0l	equ	0xFE9
-   316                           wreg	equ	0xFE8
-   317                           indf1	equ	0xFE7
-   318                           postinc1	equ	0xFE6
-   319                           postdec1	equ	0xFE5
-   320                           preinc1	equ	0xFE4
-   321                           plusw1	equ	0xFE3
-   322                           fsr1h	equ	0xFE2
-   323                           fsr1l	equ	0xFE1
-   324                           bsr	equ	0xFE0
-   325                           indf2	equ	0xFDF
-   326                           postinc2	equ	0xFDE
-   327                           postdec2	equ	0xFDD
-   328                           preinc2	equ	0xFDC
-   329                           plusw2	equ	0xFDB
-   330                           fsr2h	equ	0xFDA
-   331                           fsr2l	equ	0xFD9
-   332                           status	equ	0xFD8
+   234                           ;	CP3 = OFF, Block 3 (00C000-00FFFFh) not code-protected
+   235   300008                     	org	3145736
+   236   300008  0F                 	db	15
+   237                           
+   238                           ;Config register CONFIG5H @ 0x300009
+   239                           ;	Boot Block Code Protection bit
+   240                           ;	CPB = OFF, Boot block (000000-0007FFh) not code-protected
+   241                           ;	Data EEPROM Code Protection bit
+   242                           ;	CPD = OFF, Data EEPROM not code-protected
+   243   300009                     	org	3145737
+   244   300009  C0                 	db	192
+   245                           
+   246                           ;Config register CONFIG6L @ 0x30000A
+   247                           ;	Write Protection bit
+   248                           ;	WRT0 = OFF, Block 0 (000800-003FFFh) not write-protected
+   249                           ;	Write Protection bit
+   250                           ;	WRT1 = OFF, Block 1 (004000-007FFFh) not write-protected
+   251                           ;	Write Protection bit
+   252                           ;	WRT2 = OFF, Block 2 (008000-00BFFFh) not write-protected
+   253                           ;	Write Protection bit
+   254                           ;	WRT3 = OFF, Block 3 (00C000-00FFFFh) not write-protected
+   255   30000A                     	org	3145738
+   256   30000A  0F                 	db	15
+   257                           
+   258                           ;Config register CONFIG6H @ 0x30000B
+   259                           ;	Configuration Register Write Protection bit
+   260                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
+   261                           ;	Boot Block Write Protection bit
+   262                           ;	WRTB = OFF, Boot Block (000000-0007FFh) not write-protected
+   263                           ;	Data EEPROM Write Protection bit
+   264                           ;	WRTD = OFF, Data EEPROM not write-protected
+   265   30000B                     	org	3145739
+   266   30000B  E0                 	db	224
+   267                           
+   268                           ;Config register CONFIG7L @ 0x30000C
+   269                           ;	Table Read Protection bit
+   270                           ;	EBTR0 = OFF, Block 0 (000800-003FFFh) not protected from table reads executed in other
+      +                           blocks
+   271                           ;	Table Read Protection bit
+   272                           ;	EBTR1 = OFF, Block 1 (004000-007FFFh) not protected from table reads executed in other
+      +                           blocks
+   273                           ;	Table Read Protection bit
+   274                           ;	EBTR2 = OFF, Block 2 (008000-00BFFFh) not protected from table reads executed in other
+      +                           blocks
+   275                           ;	Table Read Protection bit
+   276                           ;	EBTR3 = OFF, Block 3 (00C000-00FFFFh) not protected from table reads executed in other
+      +                           blocks
+   277   30000C                     	org	3145740
+   278   30000C  0F                 	db	15
+   279                           
+   280                           ;Config register CONFIG7H @ 0x30000D
+   281                           ;	Boot Block Table Read Protection bit
+   282                           ;	EBTRB = OFF, Boot Block (000000-0007FFh) not protected from table reads executed in ot
+      +                          her blocks
+   283   30000D                     	org	3145741
+   284   30000D  40                 	db	64
+   285                           tosu	equ	0xFFF
+   286                           tosh	equ	0xFFE
+   287                           tosl	equ	0xFFD
+   288                           stkptr	equ	0xFFC
+   289                           pclatu	equ	0xFFB
+   290                           pclath	equ	0xFFA
+   291                           pcl	equ	0xFF9
+   292                           tblptru	equ	0xFF8
+   293                           tblptrh	equ	0xFF7
+   294                           tblptrl	equ	0xFF6
+   295                           tablat	equ	0xFF5
+   296                           prodh	equ	0xFF4
+   297                           prodl	equ	0xFF3
+   298                           indf0	equ	0xFEF
+   299                           postinc0	equ	0xFEE
+   300                           postdec0	equ	0xFED
+   301                           preinc0	equ	0xFEC
+   302                           plusw0	equ	0xFEB
+   303                           fsr0h	equ	0xFEA
+   304                           fsr0l	equ	0xFE9
+   305                           wreg	equ	0xFE8
+   306                           indf1	equ	0xFE7
+   307                           postinc1	equ	0xFE6
+   308                           postdec1	equ	0xFE5
+   309                           preinc1	equ	0xFE4
+   310                           plusw1	equ	0xFE3
+   311                           fsr1h	equ	0xFE2
+   312                           fsr1l	equ	0xFE1
+   313                           bsr	equ	0xFE0
+   314                           indf2	equ	0xFDF
+   315                           postinc2	equ	0xFDE
+   316                           postdec2	equ	0xFDD
+   317                           preinc2	equ	0xFDC
+   318                           plusw2	equ	0xFDB
+   319                           fsr2h	equ	0xFDA
+   320                           fsr2l	equ	0xFD9
+   321                           status	equ	0xFD8
 
 Data Sizes:
     Strings     0
@@ -514,7 +509,7 @@ SFR                  0      0       0     200        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Sat Sep 30 14:17:41 2023
+Symbol Table                                                                                   Sat Oct 14 17:33:03 2023
 
                       l5 1008                      l681 1008                     _main 1008  
                    start 0000             ___param_bank 0000                    ?_main 0000  
