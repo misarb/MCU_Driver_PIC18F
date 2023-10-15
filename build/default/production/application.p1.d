@@ -1,4 +1,4 @@
-build/default/debug/application.p1:  \
+build/default/production/application.p1:  \
 application.c  \
 application.h  \
 ECU_Layer/LED/ecu_led.h  \

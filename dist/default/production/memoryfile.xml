@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/debug\McalDriver.X.debug.hex">
+  <executable name="dist/default/production\McalDriver.X.production.hex">
     <memory name="program">
       <units>bytes</units>
       <length>65536</length>
-      <used>16</used>
-      <free>65520</free>
+      <used>723</used>
+      <free>64813</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>3968</length>
-      <used>0</used>
-      <free>3968</free>
+      <used>42</used>
+      <free>3926</free>
     </memory>
   </executable>
 </project>
